@@ -30,5 +30,4 @@ for i in range(n):
     check[i] = False
 
 print(0)
-
 #통과!
