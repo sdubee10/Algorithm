@@ -29,5 +29,7 @@ for i in range(n):
 
 print(len(apt))
 apt.sort()
-for i in apt:
+for i in apt:과
     print(i)
+
+#통과
