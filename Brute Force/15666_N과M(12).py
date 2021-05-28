@@ -1,0 +1,54 @@
+# 문제
+# N개의 자연수와 자연수 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.
+#
+# N개의 자연수 중에서 M개를 고른 수열
+# 같은 수를 여러 번 골라도 된다.
+# 고른 수열은 비내림차순이어야 한다.
+# 길이가 K인 수열 A가 A1 ≤ A2 ≤ ... ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.
+#
+# 입력
+# 첫째 줄에 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)
+# 둘째 줄에 N개의 수가 주어진다. 입력으로 주어지는 수는 10,000보다 작거나 같은 자연수이다.
+#
+# 출력
+# 한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.
+#
+# 수열은 사전 순으로 증가하는 순서로 출력해야 한다.
+
+n, m = map(int, input().split())
+num_list = sorted(map(int, input().split()))
+check = [0 for i in range(n)]
+d = {}
+s = []
+
+def dfs(depth):
+    if len(s) == m:
+        tmp = ' '.join(map(str, s))
+        if tmp not in d:
+            d[tmp] = 1
+            print(tmp)
+        return
+    for i in range(n):
+        if depth == 0 or s[-1] <= num_list[i]:
+            s.append(num_list[i])
+            dfs(depth + 1)
+            s.pop()
+dfs(0)
+
+# def dfs(depth):
+#     if depth == M:
+#         s = ' '.join(map(str, li))
+#         if s not in d:
+#             d[s] = 1
+#             print(s)
+#         return ;
+#     for i in range(N):
+#         if depth == 0 or li[-1] <= nums[i]:
+#             li.append(nums[i])
+#             dfs(depth+1)
+#             li.pop()
+# s
+# N, M = map(int, input().split())
+# nums = sorted(map(int, input().split()))
+# d = {}; li = []
+# dfs(0)
